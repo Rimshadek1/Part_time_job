@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form action="/admin/edit-eventss/{{event._id}}" method="post" role="form"
+                enctype="application/x-www-form-urlencoded">
+                <legend>Add Event</legend>
+
+                <div class="form-group">
+                    <label for="Location">Location</label>
+                    <input type="text" class="form-control" name="Location" id="Location" placeholder="Location"
+                        value="{{event.Location}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="Time">Time</label>
+                    <input type="text" class="form-control" name="Time" id="Time" placeholder="Time"
+                        value="{{event.Time}}">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="Date">Date</label>
+                    <input type="date" class="form-control" name="Date" id="Date" placeholder="Date"
+                        value="{{event.Date}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="Event_name">Event Name</label>
+                    <input type="text" class="form-control" name="Event_name" placeholder="Event_name" id="Event_name"
+                        value="{{event.Event_name}}">
+                </div>
+                <div class="form-group">
+                    <label for="Slot_left">Slot Left</label>
+                    <input type="number" class="form-control" name="Slot_left" placeholder="Slot_left" id="Slot_left"
+                        value="{{event.Slot_left}}">
+                </div>
+                <div class="form-group">
+                    <label for="ppp">Price per person</label>
+                    <input type="number" class="form-control" name="ppp" placeholder="ppp" id="ppp"
+                        value="{{event.ppp}}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+confirmBooking: (proId, userId) => {
+        console.log(proId);
+        console.log(userId);
+        return new Promise(async (resolve, reject) => {
+            let userBook = await db.get().collection(collection.bookCollection).findOne({ user: new ObjectId(userId) });
+            if (userBook) {
+                console.log('if');
+                // If user's cart already exists, add the new product id to the existing array
+                db.get().collection(collection.bookCollection).updateOne(
+                    { user: new ObjectId(userId) },
+                    { $push: { events: proId } }
+                ).then(() => {
+                    resolve();
+                });
+            } else {
+                console.log('elsre');
+                // If user's cart doesn't exist, create a new cart object with a single array for products
+                const cartObj = {
+                    user: new ObjectId(userId),
+                    events: [proId]
+                };
+                db.get().collection(collection.bookCollection).insertOne(cartObj).then(() => {
+                    resolve();
+                });
+            }
+        });
+    }

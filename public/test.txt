@@ -1,0 +1,25 @@
+<a href="app-transaction-detail.html" class="item">
+                    <div class="detail">
+                        <img src="assets/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
+                        {{#if Event}}
+                        <div>
+                            <strong>{{this.Event}}</strong>
+                            <p>{{this.Fine}}</p>
+                        </div>
+                        {{else}}
+                        <div>
+                            <strong>Withdraw</strong>
+                            <p>Amount</p>
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{#if Event}}
+                    <div class="right">
+                        <div class="price text-success"> +₹ {{this.Salary}}</div>
+                    </div>
+                    {{else}}
+                    <div class="right">
+                        <div class="price text-danger"> -₹ {{this.Withdraw}}</div>
+                    </div>
+                    {{/if}}
+                </a>

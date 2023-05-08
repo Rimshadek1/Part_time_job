@@ -1,0 +1,49 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href="/admin/add-event" class="btn btn-primary ml-auto">Add Event</a>
+            </div>
+            <div class="col">
+                <a href="/admin/add-salary" class="btn btn-success ml-auto">Add Salary</a>
+            </div>
+            <div class="col">
+                <a href="/admin/view-salary" class="btn btn-primary ml-auto">View Salary</a>
+            </div>
+            <div class="col">
+                <a href="/admin/withdraw" class="btn btn-danger ml-auto">Withdraw Salary</a>
+            </div>
+        </div>
+        <table class=" table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Event_name</th>
+                    <th scope="col">Slot_left</th>
+                    <th scope="col">price per person</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {{#each events}}
+                <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.Location}}</td>
+                    <td>{{this.Time}}</td>
+                    <td>{{this.Date}}</td>
+                    <td>{{this.Event_name}}</td>
+                    <td>{{this.Slot_left}}</td>
+                    <td>{{this.ppp}}</td>
+                    <td> <a href="/admin/edit-event/{{this._id}}" class="btn btn-primary">Edit</a>
+                        <a href="/admin/delete-event/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you sure to delete {{this.Name}}')">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

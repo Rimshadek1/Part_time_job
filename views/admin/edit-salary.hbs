@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form action="/admin/editSalary/{{salary._id}}" method="post" role="form"
+                enctype="application/x-www-form-urlencoded">
+                <legend>Add Salary</legend>
+
+                <div class="form-group">
+                    <label for="Mobile">Mobile Number</label>
+                    <input type="tel" class="form-control" name="mobile" id="mobile" value="{{salary.mobile}}"
+                        placeholder="Your Mobile Number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Event">Event Name</label>
+                    <input type="text" class="form-control" name="Event" value="{{salary.Event}}" id="Event"
+                        placeholder="Event">
+                </div>
+
+                <div class="form-group">
+                    <label for="Date">Date</label>
+                    <input type="date" class="form-control" name="Date" value="{{salary.Date}}" id="Date"
+                        placeholder="Date">
+                </div>
+
+                <div class="form-group">
+                    <label for="Salary">Salary</label>
+                    <input type="number" class="form-control" name="Salary" value="{{salary.Salary}}"
+                        placeholder="Salary" id="Salary">
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="Fine">Fine</label>
+                    <input type="number" class="form-control" name="Fine" value="{{salary.Fine}}" placeholder="Fine"
+                        id="Fine">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form action="/admin/addSalary" method="post" id="myForm" role="form"
+                enctype="application/x-www-form-urlencoded">
+                <legend>Add Salary</legend>
+
+                <div class="form-group">
+                    <label for="Mobile">Mobile Number</label>
+                    <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Your Mobile Number"
+                        pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Event">Event Name</label>
+                    <input type="text" class="form-control" name="Event" id="Event" placeholder="Event">
+                </div>
+
+                <div class="form-group">
+                    <label for="Date">Date</label>
+                    <input type="date" class="form-control" name="Date" id="Date" placeholder="Date">
+                </div>
+
+                <div class="form-group">
+                    <label for="Salary">Salary</label>
+                    <input type="number" class="form-control" name="Salary" placeholder="Salary" id="Salary">
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="Fine">Fine</label>
+                    <input type="number" class="form-control" name="Fine" placeholder="Fine" id="Fine">
+                </div>
+                <input type="hidden" id="datetime" name="datetime">
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const datetimeField = document.getElementById("datetime");
+    const currentDatetime = new Date().toISOString();
+    datetimeField.value = currentDatetime;
+</script>
