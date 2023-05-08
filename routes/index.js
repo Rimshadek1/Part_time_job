@@ -118,7 +118,7 @@ router.post('/submit', function (req, res) {
 router.post('/send-otp', async (req, res) => {
   const mobileNumber = req.body.mobile;
   try {
-    const otp = await userHelper.generateOpt(mobileNumber);
+    const otp = await userHelper.generateOtp(mobileNumber);
     res.send(`OTP sent successfully to ${mobileNumber}`);
   } catch (error) {
     console.error('There was an error sending the OTP:', error);

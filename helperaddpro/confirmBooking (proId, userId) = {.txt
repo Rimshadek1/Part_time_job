@@ -25,3 +25,23 @@ confirmBooking: (proId, userId) => {
             }
         });
     }
+
+
+
+
+
+
+
+
+    var sid = 'AC7dca3afbe85e0921d4765209c39658b7'
+var auth_token = 'a629aaf909fa37080edbfa22240ae420'
+var twilio=require('twilio')(sid,auth_token)
+
+twilio.messages.create({
+    from,
+    to,
+    body:'Your OTP is ${otp}'
+    
+}).then((res) => {
+    console.log('messege has sent');
+}).catch((err)=>{console.log(err);})

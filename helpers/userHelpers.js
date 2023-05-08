@@ -1,47 +1,36 @@
 var db = require('../config/connection')
 var collection = require('../config/collection')
-var bcrypt = require('bcrypt')
 const ObjectId = require('mongodb').ObjectId;
-
-const { Vonage } = require('@vonage/server-sdk')
-const otpGenerator = require('otp-generator');
 const { response } = require('../app');
-const otp = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
 
-const vonage = new Vonage({
-    apiKey: "d0702ac0",
-    apiSecret: "ycbtvj5s4qxhFbvv"
-})
-
-
-
+var bcrypt = require('bcrypt');
+const otpGenerator = require('otp-generator');
+const twilio = require('twilio');
+const accountSid = 'AC7dca3afbe85e0921d4765209c39658b7';
+const authToken = 'a629aaf909fa37080edbfa22240ae420';
+const client = twilio(accountSid, authToken);
 
 module.exports = {
     // Generate and send OTP via SMS
-    generateOpt: (mobileNumber) => {
+    generateOtp: (mobileNumber) => {
         return new Promise(async (resolve, reject) => {
             console.log(mobileNumber);
-            const code = 91;
-            const from = "Vonage APIs";
+            const code = '+91';
+            const from = '+14432475219';
             const to = code + mobileNumber;
-            const text = 'kittiyada otp';
-            const otp = Math.floor(Math.random() * 1000000);
+            const otp = otpGenerator.generate(6, { numeric: true });
 
-            async function sendSMS() {
-                await vonage.sms.send({ to, from, text: `Your OTP is ${otp}` })
-                    .then(resp => {
-                        console.log('Message sent successfully');
-                        console.log(resp);
-                        resolve(otp);
-                    })
-                    .catch(err => {
-                        console.log('There was an error sending the message.');
-                        console.error(err);
-                        reject(err);
-                    });
-            }
-
-            sendSMS();
+            client.messages.create({ to, from, body: `Your OTP is ${otp}` })
+                .then(resp => {
+                    console.log('Message sent successfully');
+                    console.log(resp);
+                    resolve(otp);
+                })
+                .catch(err => {
+                    console.log('There was an error sending the message.');
+                    console.error(err);
+                    reject(err);
+                });
         });
     },
 
@@ -65,6 +54,10 @@ module.exports = {
                     .insertOne(userData)
                     .then((data) => {
                         resolve(data.insertedId);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        reject(err);
                     });
             } else {
                 // Return an error if the OTP is invalid
